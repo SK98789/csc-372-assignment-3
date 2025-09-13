@@ -1,0 +1,26 @@
+header{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    background-color: darkblue;
+    color: antiquewhite;
+    font-family: 'Comic Sans MS', cursive;
+    
+
+}
+img{
+    max-width: 300px;
+    max-height: 300px;
+}
+main{
+
+
+}
+aside{
+    padding: 10px;
+    max-width: 250px;
+}
+
+#main_flexbox{
+    display: flex;
+}
