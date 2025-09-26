@@ -19,13 +19,21 @@ var total = 0.00;
 //For button clicking
 for(let i = 0; i < dishes.length; i++){
     let favoritesButton = document.createElement("button");
-    favoritesButton.textContent = "\u{2665}";
+    favoritesButton.textContent = "Add to Favorites  \u{2665}";
     dishes[i].appendChild(favoritesButton);
+
+
+    let pricePara = document.createElement("p");
+    priceParaContent = document.createTextNode(dishes[i].dataset.price);
+    pricePara.appendChild(priceParaContent);
+    let dishTitle = dishes[i].querySelector("figure");
+    dishes[i].insertBefore(pricePara, dishTitle);
 
     favoritesButton.addEventListener('click', function () {
         //If favorites is already selected
         if(dishes[i].classList.contains("selected_dish_card")){
             dishes[i].classList.remove("selected_dish_card");
+            favoritesButton.textContent = "Add to Favorites  \u{2665}";
 
             favoritesSummary.removeChild(favorites[i]);
             //Update running total
@@ -38,17 +46,18 @@ for(let i = 0; i < dishes.length; i++){
         else{
             dishes[i].classList.add("selected_dish_card");
             favoritesSummary.insertBefore(favorites[i], totalPrice);
+            favoritesButton.textContent = "In Favorites  \u{2665}";
             //Update running total
             total += Number(dishes[i].dataset.price);
             updateTotal();
 
         }
     });
-    //For each dish, create a card to add to the favorites
+    //For each dish, create a row to add to the favorites
     //section on selection
     createFavoriteCard(dishes[i]);
 }
-
+//Create the favorites box and append it to main
 var favoritesSummary = document.createElement('div');
 var title = document.createElement('h2');
 title.appendChild(document.createTextNode("Favorites"));
@@ -56,6 +65,7 @@ favoritesSummary.appendChild(title);
 
 document.querySelector("main").appendChild(favoritesSummary);
 
+//Create the running total box to sit below the favorites
 var totalPrice = document.createElement("div");
 totalPrice.id = "favorites_total";
 let label = document.createElement("p");
@@ -79,6 +89,7 @@ function updateTotal(){
     textPrice.data = total.toFixed(2);
 }
 
+//Create a row containing the dish name and price
 function createFavoriteCard(dish){
     let dishCard = document.createElement("div");
     dishCard.classList.add("favorites_item")
