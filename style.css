@@ -53,6 +53,29 @@ footer{
     border-radius: 10px;
 }
 
+.selected_dish_card {
+    background-color: darksalmon;
+}
+.favorites_item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+}
+
+#favorites_total{
+    display: flex;
+    flex-direction: row;
+    justify-content:end;
+    gap: 20px;
+}
+
+#favorites_container{
+    display: flex;
+    flex-direction: column;
+}
+
 #main_flexbox {
     display: flex;
     flex-shrink: 1;
